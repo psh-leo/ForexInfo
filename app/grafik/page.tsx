@@ -28,9 +28,9 @@ export default function GrafikPage() {
     script.src = "https://s3.tradingview.com/tv.js";
     script.async = true;
     script.onload = () => {
-      // @ts-ignore - TradingView is injected globally by tv.js
+      // @ts-expect-error - TradingView is injected globally by tv.js
       if (window.TradingView) {
-        // @ts-ignore
+        // @ts-expect-error - TradingView is injected globally by tv.js
         new window.TradingView.widget({
           symbol: activeSymbol,
           interval: "D",
