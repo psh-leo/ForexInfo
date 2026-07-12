@@ -8,7 +8,7 @@ const currencyPairs = [
   { label: "GBP/USD", symbol: "FX:GBPUSD" },
   { label: "USD/JPY", symbol: "FX:USDJPY" },
   { label: "AUD/USD", symbol: "FX:AUDUSD" },
-  { label: "USD/IDR", symbol: "FX:USDIDR" },
+  { label: "EUR/GBP", symbol: "FX:EURGBP" },
 ];
 
 export default function GrafikPage() {
