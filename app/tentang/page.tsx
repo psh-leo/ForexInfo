@@ -28,7 +28,7 @@ export default function TentangPage() {
         {/* SECTION 2 — Tujuan Website */}
         <section className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-slide-down" style={{ animationDelay: "200ms" }}>
           {/* Card 1 */}
-          <div className="bg-surface-alt border border-border rounded-xl p-6 transition-colors hover:border-primary/30">
+          <div className="bg-surface-alt border border-border rounded-xl p-6 transition-all duration-300 hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-1 hover:bg-gradient-to-br hover:from-surface-alt hover:to-primary/5">
             <div className="w-12 h-12 mb-4 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:bg-primary/20 transition-colors">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
@@ -42,7 +42,7 @@ export default function TentangPage() {
           </div>
 
           {/* Card 2 */}
-          <div className="bg-surface-alt border border-border rounded-xl p-6 transition-colors hover:border-primary/30">
+          <div className="bg-surface-alt border border-border rounded-xl p-6 transition-all duration-300 hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-1 hover:bg-gradient-to-br hover:from-surface-alt hover:to-primary/5">
             <div className="w-12 h-12 mb-4 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:bg-primary/20 transition-colors">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M3 3v18h18"></path>
@@ -57,7 +57,7 @@ export default function TentangPage() {
           </div>
 
           {/* Card 3 */}
-          <div className="bg-surface-alt border border-border rounded-xl p-6 transition-colors hover:border-primary/30">
+          <div className="bg-surface-alt border border-border rounded-xl p-6 transition-all duration-300 hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-1 hover:bg-gradient-to-br hover:from-surface-alt hover:to-primary/5">
             <div className="w-12 h-12 mb-4 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:bg-primary/20 transition-colors">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="11" cy="11" r="8"></circle>

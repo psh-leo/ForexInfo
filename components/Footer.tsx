@@ -43,24 +43,6 @@ export default function Footer() {
             </span>
           </Link>
 
-          {/* Navigation */}
-          <nav className="flex flex-wrap items-center justify-center gap-6">
-            {[
-              { href: "/", label: "Beranda" },
-              { href: "/edukasi", label: "Edukasi" },
-              { href: "/analisis", label: "Analisis" },
-              { href: "/grafik", label: "Grafik" },
-              { href: "/tentang", label: "Tentang" },
-            ].map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm text-muted hover:text-primary transition-colors duration-300"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
         </div>
 
         {/* ===== Divider ===== */}

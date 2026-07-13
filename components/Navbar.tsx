@@ -93,10 +93,10 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`relative px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 ${
+                  className={`relative px-4 py-2 text-base font-semibold rounded-lg transition-all duration-300 ${
                     isActive
                       ? "text-primary"
-                      : "text-muted hover:text-foreground"
+                      : "text-gray-300 hover:text-white"
                   }`}
                 >
                   {link.label}

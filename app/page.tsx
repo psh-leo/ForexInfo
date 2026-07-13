@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -9,98 +8,82 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* SECTION 1 — Hero */}
-      <section className="relative flex items-center justify-center min-h-screen pt-16 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <section className="relative flex items-center justify-center min-h-[85vh] pt-24 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden border-b border-border/50">
+        {/* Ambient Glowing Orbs */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px] pointer-events-none animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-[100px] pointer-events-none animate-pulse" style={{ animationDelay: '2s' }}></div>
+        
         {/* Subtle CSS Grid Background */}
         <div className="absolute inset-0 z-0 opacity-20 pointer-events-none" 
              style={{ backgroundImage: 'linear-gradient(to right, #ffffff15 1px, transparent 1px), linear-gradient(to bottom, #ffffff15 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
         </div>
         
         {/* Hero Content */}
-        <div className="relative z-10 text-center max-w-4xl mx-auto flex flex-col items-center">
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 animate-fade-in">
-            Pahami Pasar <span className="text-primary">Forex</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-muted mb-10 max-w-2xl mx-auto animate-slide-down" style={{ animationDelay: '100ms' }}>
-            Platform informasi dan edukasi foreign exchange untuk investor pemula hingga berpengalaman.
-          </p>
+        <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+          <div className="text-center lg:text-left flex flex-col items-center lg:items-start">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 animate-fade-in">
+              Pahami Pasar <br className="hidden lg:block" /><span className="text-primary">Forex</span>
+            </h1>
+            <p className="text-xl md:text-2xl text-muted animate-slide-down max-w-xl" style={{ animationDelay: '100ms' }}>
+              Platform informasi dan edukasi foreign exchange untuk investor pemula hingga berpengalaman.
+            </p>
+          </div>
           
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto animate-slide-down" style={{ animationDelay: '200ms' }}>
-            <Link 
-              href="/edukasi" 
-              className="w-full sm:w-auto px-6 py-3 bg-primary text-black font-semibold rounded-lg hover:bg-primary-hover transition-colors text-center"
-            >
-              Mulai Belajar
-            </Link>
-            <Link 
-              href="/grafik" 
-              className="w-full sm:w-auto px-6 py-3 border border-primary text-primary font-semibold rounded-lg hover:bg-primary/10 transition-colors text-center"
-            >
-              Lihat Grafik
-            </Link>
+          <div className="relative w-full max-w-md md:max-w-lg mx-auto lg:max-w-full animate-slide-down" style={{ animationDelay: '300ms' }}>
+            <div className="relative aspect-square md:aspect-video lg:aspect-[4/3] rounded-3xl overflow-hidden border border-border/80 shadow-2xl shadow-primary/20 group">
+              <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent z-10 pointer-events-none"></div>
+              <img src="/hero-image.png" alt="Forex Trading Illustration" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+            </div>
           </div>
         </div>
       </section>
 
-      {/* SECTION 2 — Navigation Cards */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Card 1 */}
-          <Link href="/edukasi" className="block group">
-            <div className="bg-surface-alt border border-border rounded-xl p-6 h-full transition-transform duration-300 group-hover:scale-105 group-hover:border-primary/30">
-              <div className="w-10 h-10 mb-4 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:bg-primary/20 transition-colors">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-                </svg>
-              </div>
-              <h2 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">Edukasi Forex</h2>
-              <p className="text-muted">Pelajari dasar-dasar trading forex, currency pair, dan mekanisme pasar.</p>
+      {/* SECTION 2 — Mengapa Mempelajari Forex? */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full border-t border-border/50">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div className="animate-slide-down" style={{ animationDelay: '200ms' }}>
+            <h2 className="text-3xl font-bold text-white mb-6">
+              Mengapa Mempelajari <span className="text-primary">Forex?</span>
+            </h2>
+            <div className="space-y-4 text-muted text-lg leading-relaxed">
+              <p>
+                Pasar valuta asing (Foreign Exchange) adalah tulang punggung perdagangan internasional dan investasi global. Berbeda dengan pasar saham tradisional, forex beroperasi secara desentralisasi selama 24 jam sehari.
+              </p>
+              <p>
+                Memahami dinamika pasar ini bukan hanya penting bagi para trader, melainkan juga bagi siapa saja yang ingin memahami bagaimana kebijakan moneter, indikator ekonomi makro, dan peristiwa geopolitik memengaruhi nilai tukar mata uang yang berdampak langsung pada perekonomian sehari-hari.
+              </p>
             </div>
-          </Link>
+          </div>
           
-          {/* Card 2 */}
-          <Link href="/analisis" className="block group">
-            <div className="bg-surface-alt border border-border rounded-xl p-6 h-full transition-transform duration-300 group-hover:scale-105 group-hover:border-primary/30">
-              <div className="w-10 h-10 mb-4 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:bg-primary/20 transition-colors">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
-                  <polyline points="16 7 22 7 22 13"></polyline>
-                </svg>
-              </div>
-              <h2 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">Analisis Teknikal</h2>
-              <p className="text-muted">Memahami indikator MA, RSI, dan MACD untuk membaca pergerakan harga.</p>
-            </div>
-          </Link>
-          
-          {/* Card 3 */}
-          <Link href="/grafik" className="block group">
-            <div className="bg-surface-alt border border-border rounded-xl p-6 h-full transition-transform duration-300 group-hover:scale-105 group-hover:border-primary/30">
-              <div className="w-10 h-10 mb-4 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:bg-primary/20 transition-colors">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="18" y1="20" x2="18" y2="10"></line>
-                  <line x1="12" y1="20" x2="12" y2="4"></line>
-                  <line x1="6" y1="20" x2="6" y2="14"></line>
-                </svg>
-              </div>
-              <h2 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">Grafik Harga</h2>
-              <p className="text-muted">Pantau pergerakan harga pasangan mata uang secara visual interaktif.</p>
-            </div>
-          </Link>
-          
-          {/* Card 4 */}
-          <Link href="/tentang" className="block group">
-            <div className="bg-surface-alt border border-border rounded-xl p-6 h-full transition-transform duration-300 group-hover:scale-105 group-hover:border-primary/30">
-              <div className="w-10 h-10 mb-4 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:bg-primary/20 transition-colors">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <line x1="12" y1="16" x2="12" y2="12"></line>
-                  <line x1="12" y1="8" x2="12.01" y2="8"></line>
-                </svg>
-              </div>
-              <h2 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">Tentang</h2>
-              <p className="text-muted">Latar belakang dan tujuan pembuatan website informasi ini.</p>
-            </div>
-          </Link>
+          <div className="bg-surface-alt border border-border/50 rounded-2xl p-8 relative overflow-hidden group hover:border-primary/30 transition-colors animate-slide-down" style={{ animationDelay: '300ms' }}>
+            <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-bl-full blur-2xl transition-all group-hover:bg-primary/20"></div>
+            
+            <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-secondary">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+              </svg>
+              Faktor Penggerak Utama
+            </h3>
+            
+            <ul className="space-y-4">
+              {[
+                { title: "Suku Bunga & Inflasi", desc: "Kebijakan Bank Sentral sangat memengaruhi daya tarik sebuah mata uang." },
+                { title: "Kondisi Geopolitik", desc: "Stabilitas politik dan hubungan dagang antar negara." },
+                { title: "Neraca Perdagangan", desc: "Arus ekspor dan impor barang serta jasa." }
+              ].map((item, idx) => (
+                <li key={idx} className="flex gap-4 p-4 rounded-xl bg-surface/50 border border-border/30">
+                  <div className="w-8 h-8 rounded-lg bg-primary/10 flex-shrink-0 flex items-center justify-center text-primary font-bold">
+                    {idx + 1}
+                  </div>
+                  <div>
+                    <h4 className="text-white font-semibold">{item.title}</h4>
+                    <p className="text-sm text-muted mt-1">{item.desc}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 
@@ -129,24 +112,20 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 4 — CTA Banner */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto w-full">
-        <div className="bg-gradient-to-br from-[#0f1f0f] to-[#0a0a0a] border border-primary/20 rounded-2xl p-8 md:p-12 text-center relative overflow-hidden">
-          {/* Decorative glow */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-md h-32 bg-primary/10 blur-[80px] rounded-full pointer-events-none"></div>
-          
-          <div className="relative z-10">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Siap Memahami Forex?</h2>
-            <p className="text-muted text-lg mb-8 max-w-2xl mx-auto">
-              Mulai dari edukasi dasar hingga analisis teknikal, semua tersedia di sini.
-            </p>
-            <Link 
-              href="/edukasi" 
-              className="inline-flex px-8 py-4 bg-primary text-black font-bold rounded-lg hover:bg-primary-hover hover:scale-105 transition-all shadow-lg shadow-primary/20"
-            >
-              Mulai Sekarang
-            </Link>
+      {/* SECTION 4 — Pendekatan Sistematis */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto w-full text-center">
+        <div className="animate-slide-down" style={{ animationDelay: '400ms' }}>
+          <div className="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center text-primary mb-6">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+              <line x1="8" y1="21" x2="16" y2="21"></line>
+              <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
           </div>
+          <h2 className="text-3xl font-bold text-white mb-6">Pendekatan Sistematis</h2>
+          <p className="text-lg text-muted leading-relaxed">
+            Menavigasi pasar forex membutuhkan pendekatan yang terstruktur. Kombinasi antara pemahaman ekonomi makro (analisis fundamental) dengan kemampuan membaca pola pergerakan harga historis (analisis teknikal) merupakan fondasi utama bagi siapa pun yang ingin menganalisis pergerakan nilai tukar mata uang secara objektif dan rasional.
+          </p>
         </div>
       </section>
     </div>
