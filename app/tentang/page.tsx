@@ -21,7 +21,7 @@ export default function TentangPage() {
         <section className="bg-surface border border-border rounded-xl p-8 shadow-sm animate-slide-down" style={{ animationDelay: "100ms" }}>
           <h2 className="text-2xl font-bold text-primary mb-4">Latar Belakang</h2>
           <p className="text-base text-foreground/90 leading-relaxed text-justify md:text-left">
-            Website ini dikembangkan sebagai implementasi dari proyek penulisan ilmiah di Program Studi Sistem Informasi, Universitas Gunadarma. Tujuan utama pembuatan website ini adalah menyediakan platform informasi yang dapat membantu masyarakat, khususnya mahasiswa dan investor pemula, dalam memahami dasar-dasar pasar foreign exchange (forex) secara sistematis dan mudah dipahami.
+            Website ini dikembangkan sebagai bagian dari proyek penulisan ilmiah di bidang sistem informasi. Tujuan utama pembuatan website ini adalah menyediakan platform informasi yang dapat membantu masyarakat, khususnya mahasiswa dan investor pemula, dalam memahami dasar-dasar pasar foreign exchange (forex) secara sistematis dan mudah dipahami.
           </p>
         </section>
 

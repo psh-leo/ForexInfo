@@ -55,9 +55,7 @@ export default function Footer() {
             <span className="text-foreground font-medium">ForexInfo</span>{" "}
             &mdash; Website Informasi Foreign Exchange
           </p>
-          <p className="text-xs text-muted/60">
-            Dibuat untuk keperluan akademis Universitas Gunadarma
-          </p>
+
 
           {/* Decorative dots */}
           <div className="flex items-center gap-1.5 mt-2">
