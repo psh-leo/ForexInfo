@@ -1,0 +1,1279 @@
+1. app/analisis/page.tsx
+
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Analisis Teknikal",
+  description: "Indikator teknikal yang digunakan untuk menganalisis pergerakan harga di pasar forex.",
+};
+
+export default function AnalisisPage() {
+  return (
+    <div className="page-container space-y-12">
+      {/* PAGE HEADER */}
+      <div className="text-center md:text-left animate-fade-in">
+        <h1 className="text-4xl font-bold text-white mb-4">Analisis Teknikal</h1>
+        <p className="text-lg text-muted max-w-3xl">
+          Indikator teknikal yang digunakan untuk menganalisis pergerakan harga di pasar forex.
+        </p>
+      </div>
+
+      <div className="space-y-6">
+        {/* INDICATOR 1 — Moving Average (MA) */}
+        <section className="bg-surface border border-border rounded-xl p-8 shadow-sm animate-slide-down" style={{ animationDelay: "100ms" }}>
+          <div className="flex flex-col gap-4 mb-6">
+            <span className="inline-block bg-primary text-black text-sm font-bold px-3 py-1 rounded w-max">
+              MA
+            </span>
+            <h2 className="text-2xl font-bold text-white">Moving Average (MA)</h2>
+          </div>
+          
+          <p className="text-base text-foreground/90 leading-relaxed text-justify md:text-left mb-8">
+            Moving Average (MA) adalah indikator teknikal yang menghitung rata-rata harga aset pada periode waktu tertentu untuk mengidentifikasi arah tren pasar. Terdapat dua jenis Moving Average yang umum digunakan, yaitu Simple Moving Average (SMA) yang menghitung rata-rata harga secara sederhana, dan Exponential Moving Average (EMA) yang memberikan bobot lebih besar pada harga terbaru sehingga lebih responsif terhadap pergerakan harga terkini (Murphy, 1999). Indikator MA digunakan oleh trader untuk menentukan arah tren, mengidentifikasi level support dan resistance dinamis, serta sebagai sinyal beli atau jual ketika dua garis MA dengan periode berbeda saling berpotongan.
+          </p>
+
+          {/* Visual: MA Lines */}
+          <div className="bg-surface-alt border border-border rounded-lg p-6">
+            <div className="flex flex-col sm:flex-row gap-6 items-start sm:items-center justify-around">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-1 bg-white rounded-full shadow-[0_0_8px_rgba(255,255,255,0.5)]"></div>
+                <span className="text-sm font-medium text-white">SMA 20</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-1 bg-secondary rounded-full shadow-[0_0_8px_rgba(234,179,8,0.5)]"></div>
+                <span className="text-sm font-medium text-secondary">SMA 50</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-1 bg-primary rounded-full shadow-[0_0_8px_rgba(34,197,94,0.5)]"></div>
+                <span className="text-sm font-medium text-primary">SMA 200</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* INDICATOR 2 — RSI */}
+        <section className="bg-surface border border-border rounded-xl p-8 shadow-sm animate-slide-down" style={{ animationDelay: "200ms" }}>
+          <div className="flex flex-col gap-4 mb-6">
+            <span className="inline-block bg-secondary text-black text-sm font-bold px-3 py-1 rounded w-max">
+              RSI
+            </span>
+            <h2 className="text-2xl font-bold text-white">Relative Strength Index (RSI)</h2>
+          </div>
+          
+          <p className="text-base text-foreground/90 leading-relaxed text-justify md:text-left mb-8">
+            Relative Strength Index (RSI) adalah indikator momentum yang mengukur kecepatan dan perubahan pergerakan harga untuk menentukan kondisi overbought atau oversold suatu aset. RSI dihitung dalam skala 0 hingga 100, di mana nilai RSI di atas 70 mengindikasikan kondisi overbought (harga terlalu tinggi dan berpotensi turun), sedangkan nilai RSI di bawah 30 mengindikasikan kondisi oversold (harga terlalu rendah dan berpotensi naik) (Murphy, 1999). Indikator ini dikembangkan oleh J. Welles Wilder dan pertama kali dipublikasikan pada tahun 1978, dan hingga saat ini tetap menjadi salah satu indikator momentum paling populer dalam analisis teknikal pasar keuangan.
+          </p>
+
+          {/* Visual: RSI Bar */}
+          <div className="bg-surface-alt border border-border rounded-lg p-6">
+            <div className="flex justify-between text-xs text-muted mb-2 font-medium">
+              <span>0 (Oversold)</span>
+              <span>30</span>
+              <span>70</span>
+              <span>100 (Overbought)</span>
+            </div>
+            {/* The RSI bar is 100% wide. 0-30 is 30% (green), 30-70 is 40% (gray), 70-100 is 30% (red). */}
+            <div className="w-full h-4 rounded-full overflow-hidden flex">
+              <div className="h-full w-[30%] bg-primary/80" title="Oversold Zone (0-30)"></div>
+              <div className="h-full w-[40%] bg-muted/30" title="Neutral Zone (30-70)"></div>
+              <div className="h-full w-[30%] bg-red-500/80" title="Overbought Zone (70-100)"></div>
+            </div>
+          </div>
+        </section>
+
+        {/* INDICATOR 3 — MACD */}
+        <section className="bg-surface border border-border rounded-xl p-8 shadow-sm animate-slide-down" style={{ animationDelay: "300ms" }}>
+          <div className="flex flex-col gap-4 mb-6">
+            <span className="inline-block bg-muted text-white text-sm font-bold px-3 py-1 rounded w-max">
+              MACD
+            </span>
+            <h2 className="text-2xl font-bold text-white">Moving Average Convergence Divergence (MACD)</h2>
+          </div>
+          
+          <p className="text-base text-foreground/90 leading-relaxed text-justify md:text-left mb-8">
+            Moving Average Convergence Divergence (MACD) adalah indikator tren-momentum yang menunjukkan hubungan antara dua Exponential Moving Average (EMA) dari harga suatu aset. MACD dihitung dengan mengurangkan EMA 26 periode dari EMA 12 periode, menghasilkan MACD line. Selanjutnya, Signal line dihitung sebagai EMA 9 periode dari MACD line itu sendiri (Murphy, 1999). Sinyal beli muncul ketika MACD line memotong Signal line dari bawah ke atas, sedangkan sinyal jual muncul ketika MACD line memotong Signal line dari atas ke bawah. Selain itu, histogram MACD yang menunjukkan selisih antara MACD line dan Signal line digunakan untuk mengukur kekuatan momentum tren yang sedang berlangsung.
+          </p>
+
+          {/* Visual: MACD Lines */}
+          <div className="bg-surface-alt border border-border rounded-lg p-6">
+            <div className="flex flex-col gap-5">
+              <div className="flex items-center gap-4">
+                <span className="w-24 text-sm font-medium text-muted text-right">MACD Line</span>
+                <div className="flex-1 h-0.5 bg-primary shadow-[0_0_8px_rgba(34,197,94,0.5)]"></div>
+              </div>
+              <div className="flex items-center gap-4">
+                <span className="w-24 text-sm font-medium text-muted text-right">Signal Line</span>
+                <div className="flex-1 h-0.5 bg-secondary shadow-[0_0_8px_rgba(234,179,8,0.5)]"></div>
+              </div>
+              <div className="flex items-center gap-4">
+                <span className="w-24 text-sm font-medium text-muted text-right">Zero Line</span>
+                <div className="flex-1 border-t-2 border-dashed border-muted/50"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  );
+}
+
+
+2. app/beranda/page.tsx
+
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Beranda",
+};
+
+export default function BerandaPage() {
+  return (
+    <div className="flex flex-col min-h-screen">
+      {/* SECTION 1 — Mengapa Mempelajari Forex? */}
+      <section className="py-16 pt-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+        <div className="mb-10 animate-fade-in">
+          <h1 className="text-4xl font-bold text-white mb-4">Beranda</h1>
+          <p className="text-lg text-muted max-w-3xl">
+            Selamat datang di ForexInfo — platform informasi dan edukasi foreign exchange.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div className="animate-slide-down" style={{ animationDelay: '100ms' }}>
+            <h2 className="text-3xl font-bold text-white mb-6">
+              Mengapa Mempelajari <span className="text-primary">Forex?</span>
+            </h2>
+            <div className="space-y-4 text-muted text-lg leading-relaxed">
+              <p>
+                Pasar valuta asing (Foreign Exchange) adalah tulang punggung perdagangan internasional dan investasi global. Berbeda dengan pasar saham tradisional, forex beroperasi secara desentralisasi selama 24 jam sehari.
+              </p>
+              <p>
+                Memahami dinamika pasar ini bukan hanya penting bagi para trader, melainkan juga bagi siapa saja yang ingin memahami bagaimana kebijakan moneter, indikator ekonomi makro, dan peristiwa geopolitik memengaruhi nilai tukar mata uang yang berdampak langsung pada perekonomian sehari-hari.
+              </p>
+            </div>
+          </div>
+          
+          <div className="bg-surface-alt border border-border/50 rounded-2xl p-8 relative overflow-hidden group hover:border-primary/30 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10 animate-slide-down" style={{ animationDelay: '200ms' }}>
+            <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-bl-full blur-2xl transition-all group-hover:bg-primary/20"></div>
+            
+            <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-secondary">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+              </svg>
+              Faktor Penggerak Utama
+            </h3>
+            
+            <ul className="space-y-4">
+              {[
+                { title: "Suku Bunga & Inflasi", desc: "Kebijakan Bank Sentral sangat memengaruhi daya tarik sebuah mata uang." },
+                { title: "Kondisi Geopolitik", desc: "Stabilitas politik dan hubungan dagang antar negara." },
+                { title: "Neraca Perdagangan", desc: "Arus ekspor dan impor barang serta jasa." }
+              ].map((item, idx) => (
+                <li key={idx} className="flex gap-4 p-4 rounded-xl bg-surface/50 border border-border/30">
+                  <div className="w-8 h-8 rounded-lg bg-primary/10 flex-shrink-0 flex items-center justify-center text-primary font-bold">
+                    {idx + 1}
+                  </div>
+                  <div>
+                    <h4 className="text-white font-semibold">{item.title}</h4>
+                    <p className="text-sm text-muted mt-1">{item.desc}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 2 — Stats Bar */}
+      <section className="bg-surface border-y border-border py-12 md:py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-border">
+            <div className="flex flex-col items-center pt-8 md:pt-0 first:pt-0">
+              <h3 className="text-lg text-muted mb-2">Pasar Forex Global</h3>
+              <p className="text-4xl md:text-5xl font-bold text-foreground mb-2">$7,5 Triliun</p>
+              <p className="text-sm text-muted">Volume transaksi harian (BIS, 2022)</p>
+            </div>
+            
+            <div className="flex flex-col items-center pt-8 md:pt-0">
+              <h3 className="text-lg text-muted mb-2">Pasangan Mata Uang</h3>
+              <p className="text-4xl md:text-5xl font-bold text-foreground mb-2">170+</p>
+              <p className="text-sm text-muted">Tersedia di pasar internasional</p>
+            </div>
+            
+            <div className="flex flex-col items-center pt-8 md:pt-0">
+              <h3 className="text-lg text-muted mb-2">Indikator Teknikal</h3>
+              <p className="text-4xl md:text-5xl font-bold text-foreground mb-2">3</p>
+              <p className="text-sm text-muted">MA, RSI, dan MACD dibahas di website ini</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 3 — Pendekatan Sistematis */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto w-full text-center">
+        <div className="animate-slide-down" style={{ animationDelay: '300ms' }}>
+          <div className="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center text-primary mb-6">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+              <line x1="8" y1="21" x2="16" y2="21"></line>
+              <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+          </div>
+          <h2 className="text-3xl font-bold text-white mb-6">Pendekatan Sistematis</h2>
+          <p className="text-lg text-muted leading-relaxed">
+            Menavigasi pasar forex membutuhkan pendekatan yang terstruktur. Kombinasi antara pemahaman ekonomi makro (analisis fundamental) dengan kemampuan membaca pola pergerakan harga historis (analisis teknikal) merupakan fondasi utama bagi siapa pun yang ingin menganalisis pergerakan nilai tukar mata uang secara objektif dan rasional.
+          </p>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+
+3. app/edukasi/page.tsx
+
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Edukasi Forex",
+  description: "Pengantar dasar foreign exchange untuk memahami pasar valuta asing global.",
+};
+
+export default function EdukasiPage() {
+  return (
+    <div className="page-container space-y-12">
+      {/* PAGE HEADER */}
+      <div className="text-center md:text-left animate-fade-in">
+        <h1 className="text-4xl font-bold text-white mb-4">Edukasi Forex</h1>
+        <p className="text-lg text-muted max-w-3xl">
+          Pengantar dasar foreign exchange untuk memahami pasar valuta asing global.
+        </p>
+      </div>
+
+      {/* SECTION 1 — Pengertian Forex */}
+      <section className="bg-surface border border-border rounded-xl p-8 shadow-sm animate-slide-down" style={{ animationDelay: "100ms" }}>
+        <h2 className="text-2xl font-bold text-primary mb-4">
+          Pengertian Foreign Exchange (Forex)
+        </h2>
+        <p className="text-base text-foreground/90 leading-relaxed text-justify md:text-left">
+          Foreign Exchange (Forex) adalah pasar keuangan global tempat mata uang dari berbagai negara diperdagangkan satu sama lain. Pasar forex beroperasi selama 24 jam sehari, lima hari dalam seminggu, dan merupakan pasar keuangan terbesar di dunia dengan volume transaksi harian mencapai 7,5 triliun dolar Amerika Serikat (BIS, 2022). Berbeda dengan pasar saham yang terpusat di bursa tertentu, pasar forex bersifat terdesentralisasi dan beroperasi secara over-the-counter (OTC) melalui jaringan bank, institusi keuangan, perusahaan, pemerintah, dan investor individu di seluruh dunia (Wang, 2018).
+        </p>
+      </section>
+
+      {/* SECTION 2 — Currency Pair */}
+      <section className="bg-surface border border-border rounded-xl p-8 shadow-sm animate-slide-down" style={{ animationDelay: "200ms" }}>
+        <h2 className="text-2xl font-bold text-primary mb-4">
+          Currency Pair (Pasangan Mata Uang)
+        </h2>
+        <p className="text-base text-foreground/90 leading-relaxed mb-8 text-justify md:text-left">
+          Transaksi dalam pasar forex selalu melibatkan dua mata uang yang dipasangkan dan dikenal sebagai currency pair. Setiap currency pair terdiri dari base currency (mata uang dasar) di posisi pertama dan quote currency (mata uang kutipan) di posisi kedua. Nilai tukar yang ditampilkan menunjukkan jumlah quote currency yang dibutuhkan untuk membeli satu unit base currency.
+        </p>
+
+        {/* 3-column info grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <div className="bg-surface-alt border border-border rounded-xl p-6 transition-colors hover:border-primary/30">
+            <h3 className="text-lg font-bold text-white mb-3">Major Pairs</h3>
+            <span className="inline-block bg-primary/10 text-primary border border-primary/20 text-xs font-medium px-2.5 py-1 rounded-full mb-3">
+              Likuiditas Tinggi
+            </span>
+            <p className="text-sm text-muted">
+              EUR/USD, GBP/USD, USD/JPY — pasangan dengan likuiditas tertinggi
+            </p>
+          </div>
+
+          <div className="bg-surface-alt border border-border rounded-xl p-6 transition-colors hover:border-secondary/30">
+            <h3 className="text-lg font-bold text-white mb-3">Minor Pairs</h3>
+            <span className="inline-block bg-secondary/10 text-secondary border border-secondary/20 text-xs font-medium px-2.5 py-1 rounded-full mb-3">
+              Cross Pairs
+            </span>
+            <p className="text-sm text-muted">
+              EUR/GBP, GBP/JPY — tidak melibatkan USD
+            </p>
+          </div>
+
+          <div className="bg-surface-alt border border-border rounded-xl p-6 transition-colors hover:border-muted/50">
+            <h3 className="text-lg font-bold text-white mb-3">Exotic Pairs</h3>
+            <span className="inline-block bg-muted/10 text-muted border border-border text-xs font-medium px-2.5 py-1 rounded-full mb-3">
+              Spread Lebar
+            </span>
+            <p className="text-sm text-muted">
+              USD/IDR, EUR/TRY — melibatkan mata uang negara berkembang
+            </p>
+          </div>
+        </div>
+
+        <p className="text-base text-foreground/90 leading-relaxed text-justify md:text-left">
+          Pemahaman mengenai currency pair merupakan fondasi utama dalam aktivitas perdagangan forex. Setiap perubahan nilai tukar dalam currency pair dipengaruhi oleh berbagai faktor seperti kondisi ekonomi, kebijakan moneter bank sentral, dan sentimen pasar global.
+        </p>
+      </section>
+    </div>
+  );
+}
+
+
+4. app/globals.css
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== BASE RESET & DESIGN TOKENS ===== */
+:root {
+  --background: #0a0a0a;
+  --surface: #111111;
+  --surface-alt: #1a1a1a;
+  --foreground: #f5f5f5;
+  --muted: #6b7280;
+  --primary: #22c55e;
+  --primary-hover: #16a34a;
+  --secondary: #eab308;
+  --secondary-hover: #ca8a04;
+  --border: #1f2937;
+  --nav-bg: #0d0d0d;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ===== SCROLLBAR STYLING ===== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+}
+
+/* ===== SELECTION STYLING ===== */
+::selection {
+  background-color: rgba(34, 197, 94, 0.3);
+  color: var(--foreground);
+}
+
+/* ===== GLOBAL LINK STYLING ===== */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ===== UTILITY CLASSES ===== */
+@layer components {
+  .card {
+    @apply bg-surface border border-border rounded-xl p-6 transition-all duration-300;
+  }
+
+  .card:hover {
+    @apply border-primary/30;
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.05);
+  }
+
+  .card-alt {
+    @apply bg-surface-alt border border-border rounded-xl p-6 transition-all duration-300;
+  }
+
+  .card-alt:hover {
+    @apply border-primary/30;
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.05);
+  }
+
+  .section-title {
+    @apply text-2xl md:text-3xl font-bold text-foreground mb-2;
+  }
+
+  .section-subtitle {
+    @apply text-muted text-sm md:text-base mb-8;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium border;
+  }
+
+  .badge-primary {
+    @apply badge bg-primary/10 text-primary border-primary/20;
+  }
+
+  .badge-secondary {
+    @apply badge bg-secondary/10 text-secondary border-secondary/20;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 bg-primary text-background font-semibold rounded-xl 
+           transition-all duration-300 hover:bg-primary-hover hover:shadow-lg hover:shadow-primary/20
+           active:scale-[0.98];
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center px-6 py-3 border border-border text-foreground font-semibold rounded-xl
+           transition-all duration-300 hover:border-primary hover:text-primary
+           active:scale-[0.98];
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+  }
+
+  .page-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20;
+  }
+
+  .glass {
+    @apply bg-surface/80 backdrop-blur-xl border border-border/50;
+  }
+}
+
+/* ===== GLOW EFFECT ===== */
+.glow-green {
+  box-shadow: 0 0 30px rgba(34, 197, 94, 0.15);
+}
+
+.glow-gold {
+  box-shadow: 0 0 30px rgba(234, 179, 8, 0.15);
+}
+
+/* ===== GRADIENT BORDERS ===== */
+.gradient-border {
+  position: relative;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+
+5. app/grafik/page.tsx
+
+"use client";
+
+import { useState, useEffect, useRef } from "react";
+
+// Symbol mapping based on requirements
+const currencyPairs = [
+  { label: "EUR/USD", symbol: "FX:EURUSD" },
+  { label: "GBP/USD", symbol: "FX:GBPUSD" },
+  { label: "USD/JPY", symbol: "FX:USDJPY" },
+  { label: "AUD/USD", symbol: "FX:AUDUSD" },
+  { label: "EUR/GBP", symbol: "FX:EURGBP" },
+];
+
+export default function GrafikPage() {
+  const [activeSymbol, setActiveSymbol] = useState<string>(currencyPairs[0].symbol);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Make sure container exists
+    const container = document.getElementById("tradingview-widget-container");
+    if (!container) return;
+
+    // Clear previous widget/script
+    container.innerHTML = "";
+
+    // Create and inject the new script
+    const script = document.createElement("script");
+    script.src = "https://s3.tradingview.com/tv.js";
+    script.async = true;
+    script.onload = () => {
+      // @ts-expect-error - TradingView is injected globally by tv.js
+      if (window.TradingView) {
+        // @ts-expect-error - TradingView is injected globally by tv.js
+        new window.TradingView.widget({
+          symbol: activeSymbol,
+          interval: "D",
+          timezone: "Asia/Jakarta",
+          theme: "dark",
+          style: "1",
+          locale: "id",
+          toolbar_bg: "#111111",
+          enable_publishing: false,
+          hide_top_toolbar: false,
+          save_image: false,
+          container_id: "tradingview-widget-container",
+        });
+      }
+    };
+    
+    container.appendChild(script);
+
+    // Cleanup function
+    return () => {
+      if (container) {
+        container.innerHTML = "";
+      }
+    };
+  }, [activeSymbol]);
+
+  return (
+    <div className="page-container space-y-10">
+      {/* PAGE HEADER */}
+      <div className="text-center md:text-left animate-fade-in">
+        <h1 className="text-4xl font-bold text-white mb-4">Grafik Harga</h1>
+        <p className="text-lg text-muted max-w-3xl">
+          Pantau pergerakan harga pasangan mata uang secara interaktif menggunakan data pasar.
+        </p>
+      </div>
+
+      {/* SECTION 1 — Currency Pair Selector */}
+      <section className="animate-slide-down" style={{ animationDelay: "100ms" }}>
+        <div className="flex flex-wrap gap-3">
+          {currencyPairs.map((pair) => {
+            const isActive = activeSymbol === pair.symbol;
+            return (
+              <button
+                key={pair.symbol}
+                onClick={() => setActiveSymbol(pair.symbol)}
+                className={`px-5 py-2.5 rounded-lg font-medium transition-all duration-300 ${
+                  isActive
+                    ? "bg-primary text-black shadow-[0_0_15px_rgba(34,197,94,0.3)] border border-primary"
+                    : "bg-surface text-muted border border-primary hover:bg-primary/10 hover:text-foreground"
+                }`}
+              >
+                {pair.label}
+              </button>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* SECTION 2 — TradingView Widget */}
+      <section className="animate-slide-down" style={{ animationDelay: "200ms" }}>
+        <div className="bg-surface border border-border rounded-xl p-2 md:p-4 shadow-sm overflow-hidden">
+          {/* Inner container for the widget to prevent React hydration mismatches */}
+          <div 
+            id="tradingview-widget-container" 
+            ref={containerRef}
+            className="h-[500px] w-full rounded-lg overflow-hidden"
+          />
+        </div>
+      </section>
+
+      {/* SECTION 3 — Info Note */}
+      <section className="animate-slide-down" style={{ animationDelay: "300ms" }}>
+        <div className="bg-surface border border-border border-l-4 border-l-secondary rounded-lg p-4 flex items-start gap-4">
+          <div className="text-2xl mt-0.5" aria-hidden="true">⚠️</div>
+          <p className="text-sm text-foreground/90 leading-relaxed">
+            Grafik di atas disediakan oleh TradingView dan menampilkan data pasar secara real-time. Website ini bersifat informatif dan tidak menyediakan layanan trading atau rekomendasi investasi.
+          </p>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+
+6. app/layout.tsx
+
+import type { Metadata } from "next";
+import "./globals.css";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+
+export const metadata: Metadata = {
+  title: {
+    default: "ForexInfo — Website Informasi Foreign Exchange",
+    template: "%s | ForexInfo",
+  },
+  description:
+    "ForexInfo adalah website informasi lengkap seputar pasar Foreign Exchange (Forex). Pelajari edukasi forex, analisis teknikal, dan pantau grafik harga secara real-time.",
+  keywords: [
+    "forex",
+    "foreign exchange",
+    "trading",
+    "edukasi forex",
+    "analisis teknikal",
+    "grafik harga",
+    "mata uang",
+  ],
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="id">
+      <body className="antialiased bg-background text-foreground font-sans">
+        <Navbar />
+        {/* Spacer for fixed navbar */}
+        <div className="pt-16 md:pt-[72px]" />
+        <main className="min-h-[calc(100vh-72px)]">{children}</main>
+        <Footer />
+      </body>
+    </html>
+  );
+}
+
+
+7. app/page.tsx
+
+import Link from "next/link";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "ForexInfo — Platform Edukasi Forex",
+  description: "Platform informasi dan edukasi foreign exchange untuk investor pemula hingga berpengalaman.",
+};
+
+export default function IndexPage() {
+  return (
+    <div className="relative flex items-center justify-center min-h-screen overflow-hidden">
+      {/* Ambient Glowing Orbs */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px] pointer-events-none animate-pulse"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-[100px] pointer-events-none animate-pulse" style={{ animationDelay: '2s' }}></div>
+
+      {/* Subtle CSS Grid Background */}
+      <div className="absolute inset-0 z-0 opacity-20 pointer-events-none"
+           style={{ backgroundImage: 'linear-gradient(to right, #ffffff15 1px, transparent 1px), linear-gradient(to bottom, #ffffff15 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center py-20">
+        {/* Left — Text */}
+        <div className="text-center lg:text-left flex flex-col items-center lg:items-start">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 animate-fade-in" style={{ animationDelay: '100ms' }}>
+            Pahami Pasar <br className="hidden lg:block" /><span className="text-primary">Forex</span>
+          </h1>
+
+          <p className="text-xl md:text-2xl text-muted max-w-xl mb-10 animate-slide-down" style={{ animationDelay: '200ms' }}>
+            Platform informasi dan edukasi foreign exchange untuk investor pemula hingga berpengalaman.
+          </p>
+
+          <Link
+            href="/beranda"
+            className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-black font-bold text-lg rounded-xl hover:bg-primary-hover hover:scale-105 transition-all shadow-lg shadow-primary/20 animate-slide-down"
+            style={{ animationDelay: '300ms' }}
+          >
+            Masuk ke Platform
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </Link>
+        </div>
+
+        {/* Right — Image */}
+        <div className="relative w-full max-w-md md:max-w-lg mx-auto lg:max-w-full animate-slide-down" style={{ animationDelay: '400ms' }}>
+          <div className="relative aspect-square md:aspect-video lg:aspect-[4/3] rounded-3xl overflow-hidden border border-border/80 shadow-2xl shadow-primary/20 group">
+            <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent z-10 pointer-events-none"></div>
+            <img src="/hero-image.png" alt="Forex Trading Illustration" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
+8. app/tentang/page.tsx
+
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Tentang",
+  description: "Latar belakang dan tujuan pembuatan website informasi Forex ini.",
+};
+
+export default function TentangPage() {
+  return (
+    <div className="page-container space-y-12">
+      {/* PAGE HEADER */}
+      <div className="text-center md:text-left animate-fade-in">
+        <h1 className="text-4xl font-bold text-white mb-4">Tentang</h1>
+        <p className="text-lg text-muted max-w-3xl">
+          Latar belakang dan tujuan pembuatan website informasi Forex ini.
+        </p>
+      </div>
+
+      <div className="space-y-6">
+        {/* SECTION 1 — Latar Belakang Website */}
+        <section className="bg-surface border border-border rounded-xl p-8 shadow-sm animate-slide-down" style={{ animationDelay: "100ms" }}>
+          <h2 className="text-2xl font-bold text-primary mb-4">Latar Belakang</h2>
+          <p className="text-base text-foreground/90 leading-relaxed text-justify md:text-left">
+            Website ini dikembangkan sebagai bagian dari proyek penulisan ilmiah di bidang sistem informasi. Tujuan utama pembuatan website ini adalah menyediakan platform informasi yang dapat membantu masyarakat, khususnya mahasiswa dan investor pemula, dalam memahami dasar-dasar pasar foreign exchange (forex) secara sistematis dan mudah dipahami.
+          </p>
+        </section>
+
+        {/* SECTION 2 — Tujuan Website */}
+        <section className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-slide-down" style={{ animationDelay: "200ms" }}>
+          {/* Card 1 */}
+          <div className="bg-surface-alt border border-border rounded-xl p-6 transition-all duration-300 hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-1 hover:bg-gradient-to-br hover:from-surface-alt hover:to-primary/5">
+            <div className="w-12 h-12 mb-4 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:bg-primary/20 transition-colors">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+              </svg>
+            </div>
+            <h3 className="text-xl font-bold text-white mb-2">Edukasi</h3>
+            <p className="text-sm text-muted">
+              Menyediakan materi edukasi dasar forex yang akurat dan mudah dipahami.
+            </p>
+          </div>
+
+          {/* Card 2 */}
+          <div className="bg-surface-alt border border-border rounded-xl p-6 transition-all duration-300 hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-1 hover:bg-gradient-to-br hover:from-surface-alt hover:to-primary/5">
+            <div className="w-12 h-12 mb-4 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:bg-primary/20 transition-colors">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M3 3v18h18"></path>
+                <rect x="7" y="10" width="4" height="7"></rect>
+                <rect x="13" y="4" width="4" height="13"></rect>
+              </svg>
+            </div>
+            <h3 className="text-xl font-bold text-white mb-2">Informasi</h3>
+            <p className="text-sm text-muted">
+              Menampilkan grafik harga pasangan mata uang secara visual dan interaktif.
+            </p>
+          </div>
+
+          {/* Card 3 */}
+          <div className="bg-surface-alt border border-border rounded-xl p-6 transition-all duration-300 hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-1 hover:bg-gradient-to-br hover:from-surface-alt hover:to-primary/5">
+            <div className="w-12 h-12 mb-4 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:bg-primary/20 transition-colors">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </div>
+            <h3 className="text-xl font-bold text-white mb-2">Referensi</h3>
+            <p className="text-sm text-muted">
+              Menjadi referensi awal bagi investor pemula sebelum memasuki pasar forex.
+            </p>
+          </div>
+        </section>
+
+        {/* SECTION 3 — Tech Stack */}
+        <section className="bg-surface border border-border rounded-xl p-8 shadow-sm animate-slide-down" style={{ animationDelay: "300ms" }}>
+          <h2 className="text-2xl font-bold text-primary mb-6">Teknologi yang Digunakan</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            {/* Tech 1 */}
+            <div className="flex gap-4">
+              <div className="w-12 h-12 flex-shrink-0 bg-surface-alt border border-border rounded-lg flex items-center justify-center font-bold text-white">
+                Nx
+              </div>
+              <div>
+                <h3 className="text-lg font-bold text-white mb-1">Next.js 14</h3>
+                <p className="text-sm text-muted">
+                  Framework React untuk membangun aplikasi web statis dan dinamis.
+                </p>
+              </div>
+            </div>
+
+            {/* Tech 2 */}
+            <div className="flex gap-4">
+              <div className="w-12 h-12 flex-shrink-0 bg-surface-alt border border-border rounded-lg flex items-center justify-center font-bold text-blue-400">
+                TS
+              </div>
+              <div>
+                <h3 className="text-lg font-bold text-white mb-1">TypeScript</h3>
+                <p className="text-sm text-muted">
+                  Superset JavaScript yang memberikan pengecekan tipe statis.
+                </p>
+              </div>
+            </div>
+
+            {/* Tech 3 */}
+            <div className="flex gap-4">
+              <div className="w-12 h-12 flex-shrink-0 bg-surface-alt border border-border rounded-lg flex items-center justify-center font-bold text-teal-400">
+                TW
+              </div>
+              <div>
+                <h3 className="text-lg font-bold text-white mb-1">Tailwind CSS 3</h3>
+                <p className="text-sm text-muted">
+                  Framework CSS berbasis utility class untuk styling yang cepat dan konsisten.
+                </p>
+              </div>
+            </div>
+
+            {/* Tech 4 */}
+            <div className="flex gap-4">
+              <div className="w-12 h-12 flex-shrink-0 bg-surface-alt border border-border rounded-lg flex items-center justify-center font-bold text-primary">
+                TV
+              </div>
+              <div>
+                <h3 className="text-lg font-bold text-white mb-1">TradingView Widget</h3>
+                <p className="text-sm text-muted">
+                  Widget grafik harga yang disematkan dari platform TradingView.
+                </p>
+              </div>
+            </div>
+            
+          </div>
+        </section>
+
+        {/* SECTION 4 — Disclaimer */}
+        <section className="animate-slide-down" style={{ animationDelay: "400ms" }}>
+          <div className="bg-surface border border-border border-l-4 border-l-orange-500 rounded-lg p-4">
+            <p className="text-sm text-muted leading-relaxed">
+              <span className="font-bold text-orange-500">Disclaimer: </span> 
+              Website ini bersifat informatif dan edukatif semata. Seluruh konten yang tersedia tidak dimaksudkan sebagai rekomendasi investasi atau saran keuangan. Keputusan investasi sepenuhnya merupakan tanggung jawab individu masing-masing.
+            </p>
+          </div>
+        </section>
+      </div>
+    </div>
+  );
+}
+
+
+9. components/Footer.tsx
+
+import Link from "next/link";
+
+export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
+  return (
+    <footer className="relative bg-nav-bg border-t border-border">
+      {/* Subtle top gradient line */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* ===== Top section ===== */}
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-8">
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-2 group">
+            <div className="w-8 h-8 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                className="text-primary"
+              >
+                <path
+                  d="M3 17L9 11L13 15L21 7"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M17 7H21V11"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </div>
+            <span className="text-lg font-bold tracking-tight">
+              <span className="text-primary">Forex</span>
+              <span className="text-foreground">Info</span>
+            </span>
+          </Link>
+
+        </div>
+
+        {/* ===== Divider ===== */}
+        <div className="border-t border-border mb-8" />
+
+        {/* ===== Bottom section ===== */}
+        <div className="flex flex-col items-center text-center gap-3">
+          <p className="text-sm text-muted">
+            &copy; {currentYear}{" "}
+            <span className="text-foreground font-medium">ForexInfo</span>{" "}
+            &mdash; Website Informasi Foreign Exchange
+          </p>
+
+
+          {/* Decorative dots */}
+          <div className="flex items-center gap-1.5 mt-2">
+            <span className="w-1 h-1 rounded-full bg-primary/40" />
+            <span className="w-1 h-1 rounded-full bg-secondary/40" />
+            <span className="w-1 h-1 rounded-full bg-primary/40" />
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+
+10. components/Navbar.tsx
+
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useState, useEffect } from "react";
+
+const navLinks = [
+  { href: "/beranda", label: "Beranda" },
+  { href: "/edukasi", label: "Edukasi Forex" },
+  { href: "/analisis", label: "Analisis Teknikal" },
+  { href: "/grafik", label: "Grafik Harga" },
+  { href: "/tentang", label: "Tentang" },
+];
+
+export default function Navbar() {
+  const pathname = usePathname();
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  const isIndexPage = pathname === "/";
+
+  // Track scroll for subtle background opacity change
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Close mobile menu on route change
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [pathname]);
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileOpen]);
+
+  return (
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isIndexPage
+          ? scrolled
+            ? "bg-nav-bg/80 backdrop-blur-xl shadow-lg shadow-black/20 border-b border-border"
+            : "bg-transparent"
+          : scrolled
+            ? "bg-nav-bg/95 backdrop-blur-xl shadow-lg shadow-black/20"
+            : "bg-nav-bg"
+      } ${!isIndexPage ? "border-b border-border" : ""}`}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 md:h-[72px]">
+          {/* ===== Logo ===== */}
+          {isIndexPage ? (
+            <div className="flex items-center gap-1">
+              <div className="w-8 h-8 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center mr-1">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  className="text-primary"
+                >
+                  <path
+                    d="M3 17L9 11L13 15L21 7"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M17 7H21V11"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
+              <span className="text-xl font-bold tracking-tight">
+                <span className="text-primary">Forex</span>
+                <span className="text-foreground">Info</span>
+              </span>
+            </div>
+          ) : (
+            <Link
+              href="/"
+              className="flex items-center gap-1 group"
+            >
+              <div className="w-8 h-8 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center mr-1 group-hover:bg-primary/20 transition-colors duration-300">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  className="text-primary"
+                >
+                  <path
+                    d="M3 17L9 11L13 15L21 7"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M17 7H21V11"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
+              <span className="text-xl font-bold tracking-tight">
+                <span className="text-primary">Forex</span>
+                <span className="text-foreground">Info</span>
+              </span>
+            </Link>
+          )}
+
+          {/* ===== Desktop Navigation (hidden on Index page) ===== */}
+          {!isIndexPage && (
+            <div className="hidden md:flex items-center gap-1">
+              {navLinks.map((link) => {
+                const isActive = pathname === link.href;
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={`relative px-4 py-2 text-base font-semibold rounded-lg transition-all duration-300 ${
+                      isActive
+                        ? "text-primary"
+                        : "text-gray-300 hover:text-white"
+                    }`}
+                  >
+                    {link.label}
+                    {/* Active indicator underline */}
+                    {isActive && (
+                      <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 bg-primary rounded-full" />
+                    )}
+                    {/* Hover background */}
+                    {!isActive && (
+                      <span className="absolute inset-0 rounded-lg bg-foreground/0 hover:bg-foreground/5 transition-colors duration-300" />
+                    )}
+                  </Link>
+                );
+              })}
+            </div>
+          )}
+
+          {/* ===== Mobile Hamburger (hidden on Index page) ===== */}
+          {!isIndexPage && (
+            <button
+              onClick={() => setMobileOpen(!mobileOpen)}
+              className="md:hidden relative w-10 h-10 flex items-center justify-center rounded-lg border border-border hover:border-primary/30 transition-colors duration-300"
+              aria-label="Toggle navigation menu"
+              aria-expanded={mobileOpen}
+            >
+              <div className="w-5 h-4 relative flex flex-col justify-between">
+                <span
+                  className={`block h-0.5 bg-foreground rounded-full transition-all duration-300 origin-center ${
+                    mobileOpen
+                      ? "rotate-45 translate-y-[7px]"
+                      : ""
+                  }`}
+                />
+                <span
+                  className={`block h-0.5 bg-foreground rounded-full transition-all duration-300 ${
+                    mobileOpen ? "opacity-0 scale-x-0" : ""
+                  }`}
+                />
+                <span
+                  className={`block h-0.5 bg-foreground rounded-full transition-all duration-300 origin-center ${
+                    mobileOpen
+                      ? "-rotate-45 -translate-y-[7px]"
+                      : ""
+                  }`}
+                />
+              </div>
+            </button>
+          )}
+        </div>
+      </div>
+
+      {/* ===== Mobile Menu Overlay (hidden on Index page) ===== */}
+      {!isIndexPage && (
+        <div
+          className={`md:hidden fixed inset-0 top-16 bg-black/60 backdrop-blur-sm transition-opacity duration-300 ${
+            mobileOpen
+              ? "opacity-100 pointer-events-auto"
+              : "opacity-0 pointer-events-none"
+          }`}
+          onClick={() => setMobileOpen(false)}
+        />
+      )}
+
+      {/* ===== Mobile Menu Panel (hidden on Index page) ===== */}
+      {!isIndexPage && (
+        <div
+          className={`md:hidden fixed top-16 left-0 right-0 bg-nav-bg border-b border-border transition-all duration-300 ${
+            mobileOpen
+              ? "translate-y-0 opacity-100"
+              : "-translate-y-4 opacity-0 pointer-events-none"
+          }`}
+        >
+          <div className="px-4 py-4 space-y-1">
+            {navLinks.map((link, index) => {
+              const isActive = pathname === link.href;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 ${
+                    isActive
+                      ? "bg-primary/10 text-primary border border-primary/20"
+                      : "text-muted hover:text-foreground hover:bg-surface"
+                  }`}
+                  style={{
+                    animationDelay: `${index * 50}ms`,
+                  }}
+                >
+                  {/* Dot indicator */}
+                  <span
+                    className={`w-1.5 h-1.5 rounded-full ${
+                      isActive ? "bg-primary" : "bg-border"
+                    }`}
+                  />
+                  {link.label}
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      )}
+    </nav>
+  );
+}
+
+
+11. tailwind.config.ts
+
+import type { Config } from "tailwindcss";
+
+const config: Config = {
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        background: "#0a0a0a",
+        surface: "#111111",
+        "surface-alt": "#1a1a1a",
+        foreground: "#f5f5f5",
+        muted: "#6b7280",
+        primary: "#22c55e",
+        "primary-hover": "#16a34a",
+        secondary: "#eab308",
+        "secondary-hover": "#ca8a04",
+        border: "#1f2937",
+        "nav-bg": "#0d0d0d",
+      },
+      fontFamily: {
+        sans: ["Inter", "system-ui", "sans-serif"],
+      },
+      animation: {
+        "fade-in": "fadeIn 0.5s ease-out forwards",
+        "slide-down": "slideDown 0.3s ease-out forwards",
+        "glow-pulse": "glowPulse 2s ease-in-out infinite",
+      },
+      keyframes: {
+        fadeIn: {
+          "0%": { opacity: "0", transform: "translateY(10px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        slideDown: {
+          "0%": { opacity: "0", transform: "translateY(-10px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        glowPulse: {
+          "0%, 100%": { boxShadow: "0 0 5px rgba(34, 197, 94, 0.2)" },
+          "50%": { boxShadow: "0 0 20px rgba(34, 197, 94, 0.4)" },
+        },
+      },
+    },
+  },
+  plugins: [],
+};
+export default config;
+
+
+12. next.config.mjs
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {};
+
+export default nextConfig;
+
+
+13. postcss.config.mjs
+
+/** @type {import('postcss-load-config').Config} */
+const config = {
+  plugins: {
+    tailwindcss: {},
+  },
+};
+
+export default config;
+
+
+14. tsconfig.json
+
+{
+  "compilerOptions": {
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
+}
+
+
